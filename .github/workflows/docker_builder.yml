@@ -9,11 +9,7 @@ on:
 
 jobs:
   build:
-    strategy:
-      os: [ubuntu-latest]
-
-    name: Build
-
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
 
