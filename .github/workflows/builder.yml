@@ -1,0 +1,33 @@
+name: builder
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    strategy:
+      os: [ubuntu-latest]
+
+    name: Build
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Software
+      run: sudo apt-get install -yq sudo time git-core build-essential clang flex bison g++ gawk gcc-multilib g++-multilib gettext git libncurses-dev libssl-dev python3-distutils rsync unzip zlib1g-dev file wget python3.6 python3.10 libelf1 libelf-dev docker
+
+    - name: gen openwrt source 
+      run: wget -O - https://github.com/openwrt/openwrt/archive/v${OPENWRT_VERSION}.tar.gz | tar --strip=1 -xzvf -
+
+    - name: Get Feeds
+      run: scripts/feeds update -a && scripts/feeds install -a
+
+    - name: defconfig
+      run: make defconfig
+
+    - name: make
+      run: make
+
