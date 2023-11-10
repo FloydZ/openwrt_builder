@@ -1,11 +1,10 @@
-name: builder
+name: builder_docker
 
 on:
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
 
 jobs:
   build:
@@ -20,5 +19,5 @@ jobs:
       run: docker build -t openwrt . 
 
     - name: Build OpenWRT
-      run: docker run  --rm -ti -v $PWD/bin:/home/openwrt/bin -v $PWD/build_dir:/home/openwrt/build_dir -v $PWD/dl:/home/openwrt/dl exec make"
+      run: docker run  --rm -ti -v $PWD/bin:/home/openwrt/bin -v $PWD/build_dir:/home/openwrt/build_dir -v $PWD/dl:/home/openwrt/dl exec make
 
