@@ -22,8 +22,7 @@ jobs:
       run: docker run  --rm -ti -v $PWD/bin:/home/openwrt/bin -v $PWD/build_dir:/home/openwrt/build_dir -v $PWD/dl:/home/openwrt/dl exec make
 
     - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: binary
-          path: |
-            bin
+      uses: actions/upload-artifact@v3
+      with:
+        name: binary
+        path: bin
