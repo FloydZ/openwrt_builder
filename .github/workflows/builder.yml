@@ -24,6 +24,9 @@ jobs:
     - name: defconfig
       run: make defconfig
 
+    - name: copy
+      run: cp config .config
+
     - name: make
       run: make
     
