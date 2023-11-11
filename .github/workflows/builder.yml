@@ -21,8 +21,8 @@ jobs:
     - name: Get Feeds
       run: scripts/feeds update -a && scripts/feeds install -a
 
-    - name: defconfig
-      run: make defconfig
+        #    - name: defconfig
+        #      run: make defconfig
 
     - name: make
       run: make
